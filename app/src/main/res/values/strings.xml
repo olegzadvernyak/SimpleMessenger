@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Simple Messenger</string>
+    
+    <!--        LOGIN FRAGMENT      -->
+    <string name="login_host_hint">Host</string>
+    <string name="login_port_hint">Port</string>
+    <string name="login_domain_hint">Domain</string>
+    <string name="login_username_hint">Username</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_submit_button">Submit</string>
 </resources>
