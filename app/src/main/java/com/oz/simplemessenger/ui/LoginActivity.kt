@@ -1,4 +1,4 @@
-package com.oz.simplemessenger
+package com.oz.simplemessenger.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

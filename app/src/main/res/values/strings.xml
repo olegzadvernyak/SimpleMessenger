@@ -8,4 +8,9 @@
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
     <string name="login_submit_button">Submit</string>
+    <string name="login_host_error">Please provide host</string>
+    <string name="login_port_error">Please provide port</string>
+    <string name="login_domain_error">Please provide domain</string>
+    <string name="login_username_error">Please provide username</string>
+    <string name="login_password_error">Please provide password</string>
 </resources>
