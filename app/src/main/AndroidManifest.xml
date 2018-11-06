@@ -14,7 +14,8 @@
         android:name=".SMApplication"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.LoginActivity"/>
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
