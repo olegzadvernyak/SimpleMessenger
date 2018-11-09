@@ -11,5 +11,6 @@ data class User(
     val port: Int,
     val domain: String,
     val username: String,
-    val password: String
+    val password: String,
+    val isActive: Boolean = false
 )

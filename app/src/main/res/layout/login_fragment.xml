@@ -103,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_chainStyle="packed">
 
         <EditText
@@ -119,16 +119,26 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/chooseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_choose_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/submitButton"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_submit_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintStart_toEndOf="@+id/chooseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

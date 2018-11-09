@@ -11,16 +11,16 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.oz.simplemessenger.ConnectionTestResult
 import com.oz.simplemessenger.R
-import com.oz.simplemessenger.SCOPE_USER
 import com.oz.simplemessenger.db.User
 import com.oz.simplemessenger.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.login_fragment.*
-import org.koin.androidx.scope.ext.android.createScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private val viewModel by viewModel<LoginViewModel>()
+
+    private var otherUsersExist = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +49,6 @@ class LoginFragment : Fragment() {
         })
         viewModel.userCreated.observe(this, Observer { isCreated ->
             if (isCreated) {
-                createScope(SCOPE_USER)
                 startActivity(
                     Intent(
                         context, MainActivity::class.java
@@ -58,6 +57,10 @@ class LoginFragment : Fragment() {
                     )
                 )
             }
+        })
+        viewModel.userCount.observe(this, Observer { count ->
+            otherUsersExist = count != 0
+            if (!otherUsersExist and (chooseButton.visibility == View.VISIBLE)) chooseButton.visibility = View.GONE
         })
 
         passwordEditText.setOnEditorActionListener { _, actionId, _ ->
@@ -69,6 +72,15 @@ class LoginFragment : Fragment() {
             }
         }
         submitButton.setOnClickListener { submit() }
+        chooseButton.setOnClickListener {
+            startActivity(
+                Intent(
+                    context, UserListActivity::class.java
+                ).putExtra(
+                    EXTRA_IS_ADD_OPTION_ENABLED, false
+                )
+            )
+        }
     }
 
     private fun hideInProgressUI() {
@@ -78,6 +90,7 @@ class LoginFragment : Fragment() {
         usernameEditText.isEnabled = true
         passwordEditText.isEnabled = true
         submitButton.visibility = View.VISIBLE
+        chooseButton.visibility = if (otherUsersExist) View.VISIBLE else View.GONE
         progressBar.visibility = View.INVISIBLE
     }
 
@@ -88,6 +101,7 @@ class LoginFragment : Fragment() {
         usernameEditText.isEnabled = false
         passwordEditText.isEnabled = false
         submitButton.visibility = View.INVISIBLE
+        chooseButton.visibility = View.GONE
         progressBar.visibility = View.VISIBLE
     }
 
